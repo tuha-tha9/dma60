@@ -1,3 +1,4 @@
+//this demonstrates how to detect when two objects collide, spefically the mouse with a rectance
 int pickupX = 200;
 int pickupY = 50;
 int pickupSize = 100;
