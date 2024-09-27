@@ -60,10 +60,15 @@ void addBirdToCanvas() {
         color c = img.pixels[i];
         float r = red(c);
         float g = green(c);
-        float b = blue(c);
+        float b = blue(c);        
 
-        // Swap Red and Blue channels
-        img.pixels[i] = color(b, g, r);
+        if(r ==0 && g == 0 && b == 0){
+            // Make black colors transparent
+            img.pixels[i] = color(255, 255, 255,0);
+        } else {            
+            // Swap Red and Blue channels
+            img.pixels[i] = color(b, g, r);
+        }
     }
     img.updatePixels();
     image(img, width/2-150, height/2-150, 300, 300);
