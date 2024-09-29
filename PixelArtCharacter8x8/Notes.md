@@ -7,7 +7,7 @@ https://www.pinterest.com/antrandall/java-game-ideas/
   https://www.pixilart.com/draw/8x8-fd09fdff3db2b99
   https://lospec.com/gallery/medium:pixel-art
   https://www.piskelapp.com/p/create/sprite
-
+  https://codeshack.io/images-sprite-sheet-generator/
 
 --> ARTICLES:
 

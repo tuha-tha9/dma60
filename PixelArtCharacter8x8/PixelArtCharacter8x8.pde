@@ -74,7 +74,7 @@ void setup(){
 
     ///  START OF KENNY///////////////////////////
 
-    /* KENNY
+    /* KENNY - https://www.pixilart.com/art/kenny-sr24293518485aws3
     orange black  brown  white
     d16630 000000 78362a ffffff
     000000,000000,d16630,d16630,d16630,d16630,000000,000000
