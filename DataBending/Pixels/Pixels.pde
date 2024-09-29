@@ -21,7 +21,7 @@ void setup() {
 void addRandomPadding() {
     // Loop through every pixel
     for(int i = 0;i< width*height;i++){
-            // # Pick a random number, 0 to 255
+        // # Pick a random number, 0 to 255
         int rand = (int) random(255);
         // # Create a grayscale color based on random number
         int randg = color(rand);
