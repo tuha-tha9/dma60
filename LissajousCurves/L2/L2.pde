@@ -8,7 +8,7 @@ int gutter = 6;
 
 // auto-computed
 int rows, cols;
-int size;
+int boxSize;
 float tx, ty;
 // Angle to be used in each iteration of draw
 float angle;
@@ -21,9 +21,13 @@ float maxRatio;
 float ratio;
 float h;
 
+public void settings() {
+  // Take up only 1000,1000 of the screen
+  size(1000, 1000);
+}
+
 void setup() {
-  // Take up the whole screen
-  size(width, height);
+  background(0);
   // The draw loop has a nested loop
   // at each iteration for the pair (i,j)
   // we plot the lissajous figure for that combination of speeds.
@@ -32,57 +36,54 @@ void setup() {
   // The shape is plotted in the center of the said square,
   // with radius 'radius' using 'gutter' space as padding
   // Thus the side is twice the sum of the radius and the gutter
-  size = 2 * (radius + gutter);
+  boxSize = 2 * (radius + gutter);
 
   // Show as many rows and columns as possible
   // -1 to accomodate header row and column
-  rows = floor(height / size) - 1;
-  cols = floor(width / size) - 1;
-
+  rows = floor(1000 / boxSize) - 1;
+  cols = floor(1000 / boxSize) - 1;
   // Translation amounts to show the
   // figure table centred on any screen
-  ty = (height - (rows + 1) * size) / 2;
-  tx = (width - (cols + 1) * size) / 2;
+  ty = (1000 - (rows + 1) * boxSize) / 2;
+  tx = (1000 - (cols + 1) * boxSize) / 2;
   angle = 0;
 
   // While entire canvas is made to fit the window,
   // off-screen canvas exactly fits the shape table
-//   back = createGraphics(100, 100);
-println(cols+ " " +rows+ " " +size);
-  back = createGraphics((int)( (cols + 1) * size), (int)( (rows + 1) * size));
-  // Notice that the off-screen canvas' backgroud is only set
-  // in setup. This enables tracing
-//   back.background(0);
-  // Setting the color mode to HSB
-  // as the colour will be determined as a hue
-  back.colorMode(HSB);
+  back = createGraphics(((cols + 1) * boxSize), ((rows + 1) * boxSize));
+
   // maximum possible ratio between the speed at which
   // the x and y co-ordinates vary 
   maxRatio = max(cols, rows);
 }
 
 void draw() {
+  back.beginDraw();
+  //  back.background(0,0,0);
+  // Setting the color mode to HSB
+  // as the colour will be determined as a hue
+  background(0);
+  // // Setting the color mode to HSB
+  // // as the colour will be determined as a hue
+  back.colorMode(HSB);
   // Translate using tx,ty calculated in setup
   translate(tx, ty);
   //render off-screen canvas
-  image(back, 0, 0);
+  
   for (int i = 0; i <= cols; i++) {
     for (int j = 0; j <= rows; j++) {
       // Each iteration considers a imaginary square,
       // side length 'side'
       // cx and cy computes the centre point of the square
-      int cx = size * i + size / 2;
-      int cy = size * j + size / 2;
+      int cx = boxSize * i + boxSize / 2;
+      int cy = boxSize * j + boxSize / 2;
       // x and y hold the current point for this iteration,
       // w.r.t. cx and cy
       // For the header column and row, this will trace a circle
       // For intersection, it traces the lissajous figure
       float x, y;
-      println(i + " " + j + " " + cx + " " + cy);
-
-      // i==0 and j==0 is the first blank space, hence continue
-    //   if (i == 0 && j == 0) then continue
-      if (i == 0 || j == 0) {
+        // i==0 and j==0 is the first blank space, hence continue
+      if (i == 0 || j == 0) { 
         //since we escaped i==0 AND j==0,
         // this happens for the header row and header column
 
@@ -114,17 +115,16 @@ void draw() {
         // However, using the entire width causes
         // this web editor to behave weirdly
         //Thus, limiting the end point just shy of the last figure
-        float endX = j == 0 ? cx + x : (cols + 0.9) * size;
+        float endX = j == 0 ? cx + x : (cols + 0.9) * boxSize;
         // In the case of header row, where i=0,
         // end point has the same x-coordinate as start.
         // y-coordinate is the end of screen,i.e. the height.
         // However, using the entire height causes
         // this web editor to behave weirdly
         //Thus, limiting the end point just shy of the last figure
-        float endY = i == 0 ? cy + y : (rows + 0.9) * size;
+        float endY = i == 0 ? cy + y : (rows + 0.9) * boxSize;
         line(cx + x, cy + y,  endX, endY);
       } else {
-
         // This is the case for an intersection
         // Here, we take the x-coordinate from the header row,
         // the y-coordinate from header column, and plot the point
@@ -137,6 +137,8 @@ void draw() {
         // the Lissajous figure
         // The colour is determined by the ratio of the "speeds"
         // of the x and y co-ordinated
+        
+        
         ratio = max(i, j) / min(i, j);
         // using "map" to map ratio
         // which may vary between 1 and maxRatio
@@ -144,18 +146,20 @@ void draw() {
         h = map(ratio, 1, maxRatio, 0, 255);
         // remember that the color mode of the off-screen
         // canvas is HSB
-        back.stroke(h, 255, 255);
-        back.strokeWeight(2);
-        back.point(cx + x, cy + y);
+          back.stroke(h, 255, 255);
+          back.strokeWeight(1);
+          back.point(cx + x, cy + y);
       }
 
       // Plot the globally computed x and y, w.r.t cx and cy
-      strokeWeight(8);
+      strokeWeight(4);
       stroke(255);
       point(cx + x, cy + y);
     }
   }
 
+back.endDraw();
+  image(back, 0, 0);
   // Angle is incremented for the next iteration
   angle += 0.01;
 }
