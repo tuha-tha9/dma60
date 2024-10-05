@@ -191,3 +191,8 @@ back.endDraw();
  * This is seen by dropping perpendiculars from header
  * rows and columns, and plotting their intersections
  */
+
+
+/*
+More about Lissajous Curves https://academo.org/demos/lissajous-curves/
+*/
