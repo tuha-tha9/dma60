@@ -19,18 +19,19 @@ void setup(){
 
     ///  START OF SMILEY///////////////////////////
     /* SMILEY FACE - https://www.pixilart.com/draw/8x8-fd09fdff3db2b99
-    yellow black
-    fff200 00000
-    fff200,fff200,fff200,fff200,fff200,fff200,fff200,fff200
-    fff200,fff200,000000,fff200,fff200,000000,fff200,fff200
-    fff200,fff200,000000,fff200,fff200,000000,fff200,fff200
-    fff200,fff200,000000,fff200,fff200,000000,fff200,fff200
-    000000,fff200,fff200,fff200,fff200,fff200,fff200,000000
-    000000,000000,fff200,fff200,fff200,fff200,000000,000000
-    fff200,000000,000000,fff200,fff200,000000,000000,fff200
-    fff200,fff200,000000,000000,000000,000000,fff200,fff200
+    1
+    00bcd4 795548 ffdbac 000000
+    00bcd4,00bcd4,795548,795548,795548,795548,00bcd4,00bcd4,
+    795548,795548,795548,795548,795548,795548,795548,795548,
+    795548,795548,ffdbac,ffdbac,ffdbac,ffdbac,795548,795548,
+    ffdbac,ffdbac,ffdbac,ffdbac,ffdbac,ffdbac,ffdbac,ffdbac,
+    ffdbac,ffdbac,000000,ffdbac,ffdbac,000000,ffdbac,ffdbac,
+    ffdbac,ffdbac,ffdbac,ffdbac,ffdbac,ffdbac,ffdbac,ffdbac,
+    ffdbac,ffdbac,ff5722,ff5722,ff5722,ff5722,ffdbac,ffdbac,
+    ffdbac,ffdbac,ffdbac,ffdbac,ffdbac,ffdbac,ffdbac,ffdbac
     */
     smileString = "fff200,fff200,fff200,fff200,fff200,fff200,fff200,fff200,fff200,fff200,000000,fff200,fff200,000000,fff200,fff200,fff200,fff200,000000,fff200,fff200,000000,fff200,fff200,fff200,fff200,000000,fff200,fff200,000000,fff200,fff200,000000,fff200,fff200,fff200,fff200,fff200,fff200,000000,000000,000000,fff200,fff200,fff200,fff200,000000,000000,fff200,000000,000000,fff200,fff200,000000,000000,fff200,fff200,fff200,000000,000000,000000,000000,fff200,fff200";
+    smileString="00bcd4,00bcd4,795548,795548,795548,795548,00bcd4,00bcd4,795548,795548,795548,795548,795548,795548,795548,795548,795548,795548,ffdbac,ffdbac,ffdbac,ffdbac,795548,795548,ffdbac,ffdbac,ffdbac,ffdbac,ffdbac,ffdbac,ffdbac,ffdbac,ffdbac,ffdbac,000000,ffdbac,ffdbac,000000,ffdbac,ffdbac,ffdbac,ffdbac,ffdbac,ffdbac,ffdbac,ffdbac,ffdbac,ffdbac,ffdbac,ffdbac,ff5722,ff5722,ff5722,ff5722,ffdbac,ffdbac,ffdbac,ffdbac,ffdbac,ffdbac,ffdbac,ffdbac,ffdbac,ffdbac";
     smileList = new ArrayList<>(Arrays.asList(smileString.split(",")));//create an array from a string using the comma (,) to separate it
 
 
